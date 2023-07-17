@@ -7,8 +7,6 @@ import {IDSProxy} from "./interfaces/IDSProxy.sol";
 import {Constants} from "./libraries/Constants.sol";
 import {IRegistry} from "./interfaces/IRegistry.sol";
 
-import "hardhat/console.sol";
-
 /// @title Liquity
 /// @notice Allows interaction with multiple protocols for DSProxy or any delegateCall type contract.
 /// @author @Mutative_
@@ -42,7 +40,6 @@ contract Liquidity is Registry, Owned {
         payable
         returns (bytes32[] memory results)
     {
-        console.log("MULTICALL");
         results = new bytes32[](data.length);
         uint256 _length = data.length;
 
