@@ -9,7 +9,7 @@ import "@matterlabs/hardhat-zksync-verify";
 const zkSyncTestnet =
   process.env.NODE_ENV == "test"
     ? {
-        url: "http://localhost:3050",
+        url: "http://localhost:8011",
         ethNetwork: "http://localhost:8545",
         zksync: true,
       }
@@ -30,7 +30,7 @@ const config: HardhatUserConfig = {
   defaultNetwork: "zkSyncTestnet",
   networks: {
     hardhat: {
-      zksync: false,
+      zksync: true,
     },
     zkSyncTestnet,
   },

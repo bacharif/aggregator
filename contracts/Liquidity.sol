@@ -14,6 +14,9 @@ contract Liquidity is Registry, Owned {
     /// @notice Address of this contract.
     IRegistry internal immutable _Registry;
 
+
+    event Execute(address indexed target, bytes1 data, bytes response);
+
     constructor(address _owner) Owned(_owner) {
         _Registry = IRegistry(address(this));
     }
@@ -46,7 +49,6 @@ contract Liquidity is Registry, Owned {
         for (uint256 i = 0; i < _length;) {
             // Decode the first item of the array into a module identifier and the associated function data
             (bytes1 _moduleIdentifier, bytes memory _moduleData) = abi.decode(data[i], (bytes1, bytes));
-
             results[i] = execute(_Registry.getModule(_moduleIdentifier), _moduleData);
 
             unchecked {
@@ -61,7 +63,7 @@ contract Liquidity is Registry, Owned {
         returns (bytes32 response)
     {
         require(_target !=  address(0), "Liquity: target-invalid");
-
+      
         // call contract in current context
         assembly {
             let succeeded := delegatecall(sub(gas(), 5000), _target, add(_data, 0x20), mload(_data), 0, 32)
