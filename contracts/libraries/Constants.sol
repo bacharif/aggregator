@@ -9,9 +9,6 @@ library Constants {
     /// @notice The address of GRAVITY address.
     address public constant _GRAVITY = 0xa4108aA1Ec4967F8b52220a4f7e94A8201F2D906;
 
-    /// @notice Address of Factory Guard contract.
-    address internal constant _FACTORY_GUARD_ADDRESS = 0x5a15566417e6C1c9546523066500bDDBc53F88C7;
-
     /////////////////////////////////////////////////////////////////
     /// --- ERRORS
     ////////////////////////////////////////////////////////////////

@@ -2,7 +2,8 @@
 pragma solidity 0.8.20;
 
 import {Constants} from "./Constants.sol";
-import {ERC20, SafeTransferLib} from 'solmate/src/utils/SafeTransferLib.sol';
+import {ERC20, SafeTransferLib} from "./SafeTransferLib.sol";
+import "hardhat/console.sol";
 
 library TokenUtils {
     using SafeTransferLib for ERC20;
@@ -10,6 +11,7 @@ library TokenUtils {
     function _approve(address _token, address _to, uint256 _amount) internal {
         if (_token == Constants._ETH) return;
 
+    console.log("Amount" , _amount);
         if (ERC20(_token).allowance(address(this), _to) < _amount || _amount == 0) {
             ERC20(_token).safeApprove(_to, _amount);
         }
